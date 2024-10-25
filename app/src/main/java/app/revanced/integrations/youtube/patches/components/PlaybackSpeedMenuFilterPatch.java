@@ -20,30 +20,30 @@ public final class PlaybackSpeedMenuFilterPatch extends Filter {
      */
     public static volatile boolean isPlaybackRateSelectorMenuVisible;
 
-    private final StringFilterGroup playbackRateSelectorGroup;
+    private final StringFilterGroup oldPlaybackMenuGroup;
 
     public PlaybackSpeedMenuFilterPatch() {
         // 0.05x litho speed menu.
-        playbackRateSelectorGroup = new StringFilterGroup(
+        var playbackRateSelectorGroup = new StringFilterGroup(
                 Settings.CUSTOM_SPEED_MENU,
                 "playback_rate_selector_menu_sheet.eml-js"
         );
 
         // Old litho based speed menu.
-        var oldPlaybackMenu = new StringFilterGroup(
+        oldPlaybackMenuGroup = new StringFilterGroup(
                 Settings.CUSTOM_SPEED_MENU,
                 "playback_speed_sheet_content.eml-js");
 
-        addPathCallbacks(playbackRateSelectorGroup, oldPlaybackMenu);
+        addPathCallbacks(playbackRateSelectorGroup, oldPlaybackMenuGroup);
     }
 
     @Override
     boolean isFiltered(@Nullable String identifier, String path, byte[] protobufBufferArray,
                        StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
-        if (matchedGroup == playbackRateSelectorGroup) {
-            isPlaybackRateSelectorMenuVisible = true;
-        } else {
+        if (matchedGroup == oldPlaybackMenuGroup) {
             isOldPlaybackSpeedMenuVisible = true;
+        } else {
+            isPlaybackRateSelectorMenuVisible = true;
         }
 
         return false;

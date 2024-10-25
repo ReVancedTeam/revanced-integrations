@@ -61,19 +61,22 @@ public class CustomPlaybackSpeedPatch {
             }
 
             customPlaybackSpeeds = new float[speedStrings.length];
-            for (int i = 0, length = speedStrings.length; i < length; i++) {
-                final float speed = Float.parseFloat(speedStrings[i]);
-                if (speed <= 0 || arrayContains(customPlaybackSpeeds, speed)) {
+
+            int i = 0;
+            for (String speedString : speedStrings) {
+                final float speedFloat = Float.parseFloat(speedString);
+                if (speedFloat <= 0 || arrayContains(customPlaybackSpeeds, speedFloat)) {
                     throw new IllegalArgumentException();
                 }
 
-                if (speed >= MAXIMUM_PLAYBACK_SPEED) {
+                if (speedFloat >= MAXIMUM_PLAYBACK_SPEED) {
                     resetCustomSpeeds(str("revanced_custom_playback_speeds_invalid", MAXIMUM_PLAYBACK_SPEED));
                     loadCustomSpeeds();
                     return;
                 }
 
-                customPlaybackSpeeds[i] = speed;
+                customPlaybackSpeeds[i] = speedFloat;
+                i++;
             }
         } catch (Exception ex) {
             Logger.printInfo(() -> "parse error", ex);

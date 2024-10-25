@@ -49,6 +49,7 @@ public final class RememberPlaybackSpeedPatch {
 
                 if (Settings.PLAYBACK_SPEED_DEFAULT.get() == finalPlaybackSpeed) {
                     // User changed to a different speed and immediately changed back.
+                    // Or the user is going past 8.0x in the glitched out 0.05x menu.
                     return;
                 }
                 Settings.PLAYBACK_SPEED_DEFAULT.save(finalPlaybackSpeed);
