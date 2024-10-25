@@ -124,7 +124,7 @@ public class CustomPlaybackSpeedPatch {
                     return;
                 }
             } catch (Exception ex) {
-                Logger.printException(() -> "isPlaybackRateSelectorMenuVisible failure failure: ", ex);
+                Logger.printException(() -> "isPlaybackRateSelectorMenuVisible failure", ex);
             }
 
             try {
@@ -134,7 +134,7 @@ public class CustomPlaybackSpeedPatch {
                     }
                 }
             } catch (Exception ex) {
-                Logger.printException(() -> "isOldPlaybackSpeedMenuVisible failure: ", ex);
+                Logger.printException(() -> "isOldPlaybackSpeedMenuVisible failure", ex);
             }
         });
     }
