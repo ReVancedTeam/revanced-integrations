@@ -317,9 +317,10 @@ public class Utils {
             return parent;
         }
 
-        final int currentDepthLog = currentDepth;
+        final int finalDepthLog = currentDepth;
+        final ViewParent finalParent = parent;
         Logger.printDebug(() -> "Could not find parent view of depth: " + nthParent
-                + " and instead found at: " + currentDepthLog + " view: " + view);
+                + " and instead found at: " + finalDepthLog + " view: " + finalParent);
         return null;
     }
 
