@@ -2,7 +2,7 @@
 #noinspection GradleDependency
 agp = "8.2.2" # 8.3.0 causes java verifier error: https://github.com/ReVanced/revanced-patches/issues/2818
 annotation = "1.8.0"
-kotlin = "2.0.0"
+kotlin = "2.0.21"
 appcompat = "1.7.0-rc01"
 okhttp = "5.0.0-alpha.14"
 retrofit = "2.11.0"
